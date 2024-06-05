@@ -1,0 +1,111 @@
+﻿<Window x:Class="Paint.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:Paint"
+        mc:Ignorable="d"
+        Background="Gray"
+        MinHeight="450"
+        MinWidth="800"
+        Icon="/PaintIcon.png"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.RowSpan="2" Orientation="Horizontal" Background="WhiteSmoke">
+            <StackPanel>
+                <Button
+                Click="Button_Clear"
+                >
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Width="90">
+                        <Image Source="/new-file.png" Width="16" Height="16" DockPanel.Dock="Left"/>
+                        <TextBlock Text="Новый файл"/>
+                    </StackPanel>
+                </Button>
+                <Button
+                Click="Button_Open"
+                >
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Width="90">
+                        <Image Source="/open.png" Width="16" Height="16"/>
+                        <TextBlock Text="Открыть"/>
+                    </StackPanel>
+                </Button>
+                <Button
+                Click="Button_Save"
+                >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Width="90">
+                        <Image Source="/save.png" Width="16" Height="16"/>
+                        <TextBlock Text="Сохранить"/>
+                    </StackPanel>
+                </Button>
+                <Button
+                Click="Button_Exit"
+                >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Width="90">
+                        <Image Source="/exit.png" Width="16" Height="16"/>
+                        <TextBlock Text="Выход"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <ListBox Name="BrushTypeList" MouseLeave="BrushTypeList_MouseLeave" SelectedIndex="0">
+                    <Image Source="/dot.png" Width="16" Height="16"/>
+                    <Image Source="/vert.png" Width="16" Height="16"/>
+                    <Image Source="/hor.png" Width="16" Height="16"/>
+                </ListBox>
+                
+            </Grid>
+        </WrapPanel>
+        
+        
+        <WrapPanel Grid.Column="5">
+            <syncfusion:ColorPicker
+                ColorChanged="ColorPicker_ColorChanged"
+                Name="ColorPicker"
+                Color="Black"
+                VerticalAlignment="Center"
+                />
+            <Slider
+                x:Name="SizeSlider"
+                Minimum="1"
+                Maximum="100"
+                Value="5"
+                Width="400"
+                ValueChanged="SizeSlider_ValueChanged"
+                VerticalAlignment="Center"
+                />
+            <TextBlock Text="5" VerticalAlignment="Center" Name="SizeTextBlock"/>
+        </WrapPanel>
+
+
+        <InkCanvas
+            Cursor="Cross"
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="5"
+            Name="DrawingField"
+            >
+            <InkCanvas.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </InkCanvas.Background>
+        </InkCanvas>
+
+
+    </Grid>
+</Window>

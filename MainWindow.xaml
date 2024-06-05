@@ -10,7 +10,7 @@
         MinHeight="450"
         MinWidth="800"
         Icon="/PaintIcon.png"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Chinese paint 中国漆" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="90"/>
@@ -62,16 +62,26 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <ListBox Name="BrushTypeList" MouseLeave="BrushTypeList_MouseLeave" SelectedIndex="0">
-                    <Image Source="/dot.png" Width="16" Height="16"/>
-                    <Image Source="/vert.png" Width="16" Height="16"/>
-                    <Image Source="/hor.png" Width="16" Height="16"/>
-                </ListBox>
+
+                <StackPanel>
+                    <Image Source="/brush.png" Width="24" Height="24"/>
+                    <ListBox Name="BrushTypeList" MouseLeave="BrushTypeList_MouseLeave" SelectedIndex="0">
+                        <Image Source="/dot.png" Width="16" Height="16" MouseDown="BrushTypeImage_MouseDown"/>
+                        <Image Source="/vert.png" Width="16" Height="16" MouseDown="BrushTypeImage_MouseDown"/>
+                        <Image Source="/hor.png" Width="16" Height="16" MouseDown="BrushTypeImage_MouseDown"/>
+                    </ListBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Name="EraserImagePanel" Height="24" Width="24" VerticalAlignment="Top">
+                    <Image x:Name="EraserImage" Source="/Eraser.png" Grid.Column="1" MouseDown="EraserImage_MouseDown"/>
+                </StackPanel>
                 
+
+
             </Grid>
         </WrapPanel>
-        
-        
+
+
         <WrapPanel Grid.Column="5">
             <syncfusion:ColorPicker
                 ColorChanged="ColorPicker_ColorChanged"
@@ -92,6 +102,7 @@
         </WrapPanel>
 
 
+        
         <InkCanvas
             Cursor="Cross"
             Grid.Column="1"

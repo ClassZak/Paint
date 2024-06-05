@@ -23,6 +23,7 @@ namespace Paint
     public partial class MainWindow : Window
     {
         BrushType TypeOfBrush= Paint.BrushType.Point;
+        ImageCheckBoxContainer EraserCheckBoxContainer = new ImageCheckBoxContainer();
         public MainWindow()
         {
             InitializeComponent();
@@ -169,7 +170,34 @@ namespace Paint
         {
             if (SizeSlider is null || BrushTypeList is null)
                 return;
+
+
+            if (EraserCheckBoxContainer.IsSelected())
+                return;
             SetBrushSize(SizeSlider.Value, (BrushType)(BrushTypeList.SelectedIndex));
+        }
+
+        private void EraserImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            EraserCheckBoxContainer.Click();
+            if(EraserCheckBoxContainer.IsSelected())
+            {
+                EraserImagePanel.Background=new SolidColorBrush(Color.FromRgb(201, 224, 247));
+                DrawingField.EditingMode=InkCanvasEditingMode.EraseByPoint;
+            }
+            else
+            {
+                EraserImagePanel.Background = new SolidColorBrush(Color.FromRgb(245, 245, 245));
+                DrawingField.EditingMode = InkCanvasEditingMode.Ink;
+                SetBrushSize(SizeSlider.Value, (BrushType)(BrushTypeList.SelectedIndex));
+            }
+                
+        }
+
+        private void BrushTypeImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(EraserCheckBoxContainer.IsSelected())
+            EraserImage_MouseDown(EraserImage, null);
         }
     }
 }

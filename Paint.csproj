@@ -70,6 +70,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BrushType.cs" />
+    <Compile Include="ImageCheckBoxContainer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -128,6 +129,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="vert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="brush.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Eraser.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -102,20 +102,23 @@
         </WrapPanel>
 
 
-        
-        <InkCanvas
-            Cursor="Cross"
+        <ScrollViewer
+            Margin="5"
             Grid.Column="1"
             Grid.Row="1"
-            Margin="5"
-            Name="DrawingField"
+            HorizontalScrollBarVisibility="Auto"
             >
-            <InkCanvas.Background>
-                <LinearGradientBrush>
-                    <GradientStop Color="White"/>
-                </LinearGradientBrush>
-            </InkCanvas.Background>
-        </InkCanvas>
+           <InkCanvas
+           Name="DrawingField"
+           >
+           <InkCanvas.Background>
+               <LinearGradientBrush>
+                   <GradientStop Color="White"/>
+               </LinearGradientBrush>
+           </InkCanvas.Background>
+        </InkCanvas> 
+        </ScrollViewer>
+        
 
 
     </Grid>

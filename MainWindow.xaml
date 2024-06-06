@@ -56,29 +56,26 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
 
 
-                <StackPanel>
-                    <Image Source="/brush.png" Width="24" Height="24"/>
-                    <ListBox Name="BrushTypeList" MouseLeave="BrushTypeList_MouseLeave" SelectedIndex="0">
-                        <Image Source="/dot.png" Width="16" Height="16" MouseDown="BrushTypeImage_MouseDown"/>
-                        <Image Source="/vert.png" Width="16" Height="16" MouseDown="BrushTypeImage_MouseDown"/>
-                        <Image Source="/hor.png" Width="16" Height="16" MouseDown="BrushTypeImage_MouseDown"/>
-                    </ListBox>
-                </StackPanel>
-
-                <StackPanel Grid.Column="1" Name="EraserImagePanel" Height="24" Width="24" VerticalAlignment="Top">
-                    <Image x:Name="EraserImage" Source="/Eraser.png" Grid.Column="1" MouseDown="EraserImage_MouseDown"/>
-                </StackPanel>
+            <WrapPanel>
                 
+                <ListBox SelectedIndex="0" Name="ModeListBox" MouseLeave="ModeListBox_MouseLeave" Width="90">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <Image x:Name="BrushImage" Source="/brush.png" Width="24" Height="24"/>
+                    <Image x:Name="EraserImage" Source="/Eraser.png" Grid.Column="1" Width="24" Height="24"/>
+                </ListBox>
 
-
-            </Grid>
+                <ListBox Name="BrushTypeList" MouseLeave="BrushTypeList_MouseLeave" MouseDown="BrushTypeList_MouseLeave" SelectedIndex="0">
+                    <Image Source="/dot.png" Width="16" Height="16" MouseDown="BrushTypeImage_MouseDown"/>
+                    <Image Source="/vert.png" Width="16" Height="16" MouseDown="BrushTypeImage_MouseDown"/>
+                    <Image Source="/hor.png" Width="16" Height="16" MouseDown="BrushTypeImage_MouseDown"/>
+                </ListBox>
+            </WrapPanel>
         </WrapPanel>
 
 
